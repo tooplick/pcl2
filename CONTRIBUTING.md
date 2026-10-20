@@ -14,7 +14,7 @@
 2. **确认版本号**：使用官方版本号（如 `1.13.1.1`）。
 3. **创建目录**：在仓库根目录新建以 `v` + 版本号命名的目录，例如 `v1.13.1.1/`。
 4. **放入文件**：保持原始文件名 `Plain Craft Launcher 2.exe`，不要改名、压缩或分卷。
-5. **更新 README**：在 [README.md](README.md) 的「当前版本列表」表格中按版本号顺序补充一行（版本、文件链接、文件大小）。文件链接请直接使用 raw 下载地址，避免访客还要手动点「Download raw file」：
+5. **更新 README**：在 [README.md](README.md) 的「当前版本列表」表格中按版本号顺序补充一行，依次填写版本号、文件、大小与下载链接。「下载」列请直接使用 raw 下载地址，避免访客还要手动点「Download raw file」：
 
    ```text
    https://raw.githubusercontent.com/tooplick/pcl2/main/v<版本号>/Plain%20Craft%20Launcher%202.exe
