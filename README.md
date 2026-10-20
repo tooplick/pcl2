@@ -8,7 +8,7 @@
 
 | 版本 | 文件 | 大小 |
 | --- | --- | --- |
-| v1.13.1.1 | [Plain Craft Launcher 2.exe](v1.13.1.1/Plain%20Craft%20Launcher%202.exe) | 5.48 MB |
+| v1.13.1.1 | [Plain Craft Launcher 2.exe](https://raw.githubusercontent.com/tooplick/pcl2/main/v1.13.1.1/Plain%20Craft%20Launcher%202.exe) | 5.48 MB |
 
 ## 说明
 
