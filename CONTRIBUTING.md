@@ -36,6 +36,10 @@ docs: 补充 2.99.0.0 之后的版本说明
 fix: 修正 v1.13.1.1 文件大小
 ```
 
+## 许可要求
+
+贡献前请先阅读 [LICENSE.md](LICENSE.md) 与 PCL 官方《[PCL 分发有限许可](https://github.com/Meloong-Git/PCL/blob/main/LICENCE)》。归档文件只能原样转载，不得修改、破解或捆绑；提交 PR 即表示你确认该分发行为符合上述许可。
+
 ## 不接受的内容
 
 - 修改版、破解版、去广告版等非官方构建
