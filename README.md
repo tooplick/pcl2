@@ -4,21 +4,28 @@
 
 > 本仓库仅做版本归档，不是 PCL2 的官方仓库，也不提供源码或官方支持。
 
+## 文件来源
+
+本仓库归档的所有安装包均取自 PCL 官方仓库 **[Meloong-Git/PCL](https://github.com/Meloong-Git/PCL)** 的历史提交（Historical Commits），即官方在过往版本中实际发布的原始文件。
+
+- 获取方式：在官方仓库的历史提交记录中定位对应版本的发布提交，下载其中的 `最新正式版.zip`，原样解压存入本仓库对应的版本目录。
+- 所有文件均未修改、未重新打包、未补充或删减任何内容；文件哈希可通过对比上游提交校验。
+
 ## 当前版本列表
 
 | 版本 | 文件 | 大小 | 下载 |
 | --- | --- | --- | --- |
-| v2.12.7.3 | [Plain Craft Launcher 2.exe](v2.12.7.3/) | 4.90 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.12.7.3/Plain%20Craft%20Launcher%202.exe) |
-| v2.12.8.1 | [Plain Craft Launcher 2.exe](v2.12.8.1/) | 5.32 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.12.8.1/Plain%20Craft%20Launcher%202.exe) |
-| v2.12.8.2 | [Plain Craft Launcher 2.exe](v2.12.8.2/) | 5.33 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.12.8.2/Plain%20Craft%20Launcher%202.exe) |
-| v2.13.0.1 | [Plain Craft Launcher 2.exe](v2.13.0.1/) | 5.38 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.13.0.1/Plain%20Craft%20Launcher%202.exe) |
-| v2.13.1.1 | [Plain Craft Launcher 2.exe](v2.13.1.1/) | 5.48 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.13.1.1/Plain%20Craft%20Launcher%202.exe) |
-| v2.14.0.0 | [Plain Craft Launcher 2.exe](v2.14.0.0/) | 5.71 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.14.0.0/Plain%20Craft%20Launcher%202.exe) |
 | v2.99.0.0 | [Plain Craft Launcher 2.exe](v2.99.0.0/) | 5.70 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.99.0.0/Plain%20Craft%20Launcher%202.exe) |
+| v2.14.0.0 | [Plain Craft Launcher 2.exe](v2.14.0.0/) | 5.71 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.14.0.0/Plain%20Craft%20Launcher%202.exe) |
+| v2.13.1.1 | [Plain Craft Launcher 2.exe](v2.13.1.1/) | 5.48 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.13.1.1/Plain%20Craft%20Launcher%202.exe) |
+| v2.13.0.1 | [Plain Craft Launcher 2.exe](v2.13.0.1/) | 5.38 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.13.0.1/Plain%20Craft%20Launcher%202.exe) |
+| v2.12.8.2 | [Plain Craft Launcher 2.exe](v2.12.8.2/) | 5.33 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.12.8.2/Plain%20Craft%20Launcher%202.exe) |
+| v2.12.8.1 | [Plain Craft Launcher 2.exe](v2.12.8.1/) | 5.32 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.12.8.1/Plain%20Craft%20Launcher%202.exe) |
+| v2.12.7.3 | [Plain Craft Launcher 2.exe](v2.12.7.3/) | 4.90 MB | [点击下载](https://raw.githubusercontent.com/tooplick/pcl2/main/v2.12.7.3/Plain%20Craft%20Launcher%202.exe) |
 
 ## 说明
 
-> **注意**：2.99.0.0 之后的版本为遵守相关法律法规，PCL 不再提供 MC（Minecraft）下载功能。
+> **注意**：包括 2.99.0.0 之后的版本为遵守相关法律法规，PCL 不再提供 MC（Minecraft）下载功能。
 
 - 每个版本单独存放于以版本号命名的目录中（如 `v2.13.1.1/`）。
 - 目录内的 `Plain Craft Launcher 2.exe` 即该版本的可执行文件，双击即可运行，无需安装。
@@ -41,4 +48,4 @@ PCL 的复制与分发须遵守《PCL 分发有限许可》与《PCL 存储库�
 
 ## 免责声明
 
-所有版本文件均来源于官方发布渠道，版权归原作者所有。本仓库仅用于存档与分享，请勿用于商业用途；使用旧版本带来的风险由使用者自行承担。
+所有版本文件均来源于 [Meloong-Git/PCL](https://github.com/Meloong-Git/PCL) 官方仓库的历史提交，版权归原作者所有。本仓库仅用于存档与分享，请勿用于商业用途；使用旧版本带来的风险由使用者自行承担。
