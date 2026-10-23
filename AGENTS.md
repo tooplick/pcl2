@@ -4,13 +4,15 @@
 - 所有 README raw 下载链接都必须包含 `versions/` 路径段。
 - `versions/` 里仅保留官方原始 exe，不要提交 PCL 运行目录、日志、配置或 Minecraft 数据。
 - 添加文件时对照来源仓库历史 blob/hash，确认二进制未被修改。
+- 新增或替换归档文件时，同步把 SHA-256 追加到 `versions/CHECKSUMS.txt`；该文件必须保持 LF 行尾（`sha256sum -c` 依赖，已由 `.gitattributes` 钉死，不要改行尾）。
 
 # 补丁 GUI
 
 - `PclDownloadPatch/` 是第三方 WinForms 工具源码，目前仅实现了 PCL 2.99.0.0 的专用补丁策略。
 - 补丁 exe 不属于历史版本归档；不要放进 `versions/`。
-- 修改补丁步骤时必须重新用原版 `versions/v2.99.0.0/Plain Craft Launcher 2.exe` 测试，JIT 校验需 436 个方法全部通过，并做启动烟测。
-- 发布工具前检查 PCL 官方许可条款，并保留 Mono.Cecil MIT 许可。
+- 构建产物只由 CI（`build-patch-tool.yml`）自动提交到仓库根目录；不要手动提交 `PclDownloadPatch/bin/` 下的任何产物，改完源码直接推送即可，CI 会跟进构建。
+- 修改补丁步骤时必须重新用原版 exe 测试（2.99.0.0 基准为 436 个方法），JIT 校验需全部方法通过，并做启动烟测。
+- 发布工具前检查 PCL 官方许可条款，并保留 Mono.Cecil MIT 许可（`MONO-CECIL-LICENSE.txt`）及本工具自身的 MIT 声明（`PclDownloadPatch/LICENSE`）。
 
 ## 补丁版本策略
 
