@@ -15,6 +15,45 @@ static class McDownloadPatch
         dependencyDirectory = directory;
     }
 
+    // 已打补丁的文件带有注入的标记成员名（元数据 #Strings 堆以 UTF-8 存储）,
+    // 直接扫描原始字节即可识别，无需完整解析程序集。
+    static readonly string[] PatchMarkers =
+    {
+        "PclPatchPendingPackFile",
+        "PclPatchModpackInstallWorker",
+    };
+
+    // 供 UI 在打补丁前调用：识别出已处理过的文件时直接提示，不再进入补丁流程
+    // （补丁本身靠模式匹配失败保证不会二次修改，这里只是给出更友好的结果）。
+    public static bool IsAlreadyPatched(string src)
+    {
+        if (string.IsNullOrWhiteSpace(src)) throw new ArgumentException("请选择输入 exe。", "src");
+        byte[] data = System.IO.File.ReadAllBytes(src);
+        foreach (var marker in PatchMarkers)
+        {
+            if (IndexOfAscii(data, marker) >= 0) return true;
+        }
+        return false;
+    }
+
+    static int IndexOfAscii(byte[] data, string text)
+    {
+        int n = data.Length, m = text.Length;
+        if (m == 0 || n < m) return -1;
+        byte first = (byte)text[0];
+        for (int i = 0; i <= n - m; i++)
+        {
+            if (data[i] != first) continue;
+            bool match = true;
+            for (int j = 1; j < m; j++)
+            {
+                if (data[i + j] != (byte)text[j]) { match = false; break; }
+            }
+            if (match) return i;
+        }
+        return -1;
+    }
+
     public static void ApplyPatch(string src, string dst, Action<string> logMessage)
     {
         if (string.IsNullOrWhiteSpace(src)) throw new ArgumentException("请选择输入 exe。", "src");

@@ -71,7 +71,7 @@ namespace PclDownloadPatch
 
             var headerTitle = new Label
             {
-                Text = "PCL 下载功能补丁",
+                Text = "解除 PCL 下载限制",
                 AutoSize = true,
                 Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold),
                 ForeColor = TitleText,
@@ -346,6 +346,19 @@ namespace PclDownloadPatch
             card.Cursor = Cursors.Hand;
         }
 
+        private void ShowAlreadyPatched()
+        {
+            SetCardStyle(Color.FromArgb(245, 249, 253), Color.FromArgb(185, 212, 236), 1.6F);
+            SetIcon(StatusIcon.IconKind.Info, InfoBlue, Color.FromArgb(232, 241, 250));
+            titleLabel.Text = "该文件已应用补丁";
+            titleLabel.ForeColor = InfoBlue;
+            subtitleLabel.Text = "无需重复处理，原文件未做任何修改";
+            subtitleLabel.ForeColor = Color.FromArgb(96, 125, 152);
+            icon.Visible = true;
+            LayoutCardContent();
+            card.Cursor = Cursors.Hand;
+        }
+
         // ---------- 交互 ----------
 
         private void DragEnterFile(object sender, DragEventArgs e)
@@ -402,6 +415,15 @@ namespace PclDownloadPatch
                 if (fileVersion < new Version(2, 99, 0, 0))
                 {
                     ShowResult(false, true, null);
+                    return;
+                }
+
+                // 已应用过补丁的文件直接提示，不进入补丁流程（补丁引擎本身也会
+                // 因模式匹配失败而拒绝，这里只是给出更友好的结果）。
+                bool alreadyPatched = await Task.Run(() => McDownloadPatch.IsAlreadyPatched(source));
+                if (alreadyPatched)
+                {
+                    ShowAlreadyPatched();
                     return;
                 }
 
