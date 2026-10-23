@@ -20,7 +20,3 @@ desktop.ini
 .vscode/
 .idea/
 *.user
-
-# ==================== 补丁工具构建产物 ====================
-PclDownloadPatch/bin/
-PclDownloadPatch/obj/
