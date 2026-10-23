@@ -17,7 +17,7 @@
 
 1. 在 Visual Studio 中打开 `PclDownloadPatch.csproj`。
 2. 还原并构建 `Release`。
-3. 产物位于 `bin\Release\net48\PCL Download Patch.exe`，Mono.Cecil 依赖嵌入在 exe 中。
+3. 产物位于 `bin\Release\net48\PCL Download Patch.exe`，Mono.Cecil 依赖嵌入在 exe 中。CI 会把它复制到仓库根目录并提交，供访客直接下载。
 
 Mono.Cecil 0.10.4 采用 MIT 许可，版权和许可文本见 `MONO-CECIL-LICENSE.txt`。
 

@@ -40,11 +40,17 @@ jobs:
         shell: pwsh
         run: dotnet build ./PclDownloadPatch/PclDownloadPatch.csproj -c Release
 
+      - name: 复制产物到仓库根目录
+        shell: pwsh
+        run: |
+          Copy-Item 'PclDownloadPatch/bin/Release/net48/PCL Download Patch.exe' 'PCL Download Patch.exe' -Force
+          Write-Output '已复制到仓库根目录。'
+
       - name: 记录构建信息
         id: buildinfo
         shell: pwsh
         run: |
-          $exe = 'PclDownloadPatch/bin/Release/net48/PCL Download Patch.exe'
+          $exe = 'PCL Download Patch.exe'
           if (-not (Test-Path $exe)) { throw "构建产物不存在：$exe" }
           $hash = (Get-FileHash $exe -Algorithm SHA256).Hash.ToLowerInvariant()
           $stamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd HH:mm:ss UTC')

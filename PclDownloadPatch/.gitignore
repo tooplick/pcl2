@@ -1,9 +1,4 @@
-bin/*
-!bin/Release/
-bin/Release/*
-!bin/Release/net48/
-bin/Release/net48/*
-!bin/Release/net48/PCL Download Patch.exe
+bin/
 obj/
 .vs/
 *.user

@@ -36,6 +36,9 @@
 
 `PclDownloadPatch/` 包含 Windows GUI 补丁工具源码。
 
+- **直接下载**：[PCL Download Patch.exe](https://raw.githubusercontent.com/tooplick/pcl2/main/PCL%20Download%20Patch.exe)（由 CI 自动构建并提交到仓库根目录，SHA-256 见提交信息）
+- 源码构建方法见 [PclDownloadPatch/README.md](PclDownloadPatch/README.md)。
+
 本工具是第三方独立制作，与 PCL 官方无关。使用和分发请自行确认符合 [PCL 分发许可](https://github.com/Meloong-Git/PCL/blob/main/LICENCE)；详见工具目录中的说明。
 
 ## 分发许可
