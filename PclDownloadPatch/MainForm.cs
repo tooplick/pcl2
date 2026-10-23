@@ -457,7 +457,7 @@ namespace PclDownloadPatch
             }
         }
 
-        private static Version ReadPclVersion(string path)
+        internal static Version ReadPclVersion(string path)
         {
             var file = new FileInfo(path);
             if (!file.Exists || file.Length < 1024 * 1024)
