@@ -9,7 +9,7 @@
 
 ## 版本策略
 
-入口在 `PatchEngine.cs` 的 `ApplyVersionStrategy`：低于 2.99.0.0 不调用补丁；2.99.0.0 及以上调用受限版策略 `PatchRestrictedBuild299`。如果后续 PCL 版本的内部 IL 结构改变，应新增对应版本策略并先验证；补丁失败时工具不会替换源文件。
+入口在 `PatchEngine.cs` 的 `ApplyVersionStrategy`：低于 2.99.0.0 不调用补丁；2.99.0.0 及以上调用受限版策略 `PatchRestrictedBuild299`。PCL 发布新版本后，应在该入口为它新增独立分支与专用策略并先验证（见仓库 `AGENTS.md` 的补丁版本策略约束）；专用策略就绪之前，未适配版本暂时沿用 2.99.0.0 的补丁方法，若新版本 IL 结构已改变会因模式匹配失败而中止，不会替换源文件。
 
 ## 构建
 
