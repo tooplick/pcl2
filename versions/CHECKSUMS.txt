@@ -1,0 +1,9 @@
+# PCL2 历史版本归档 SHA-256 清单
+# 校验方式：在本目录执行 sha256sum -c CHECKSUMS.txt（Git Bash），或用 certutil -hashfile <文件> SHA256 逐个比对
+fb3aef2e472c81be070015845f469a7b395853f1baf18ba47e958f34cea65847 *v2.12.7.3/Plain Craft Launcher 2.exe
+79a10baf61e9a1cd3134ab4e8a564f7d7eb403196b9c337b08caf7284cdd49ef *v2.12.8.1/Plain Craft Launcher 2.exe
+ff36c5d67cf5cd97322e7639cb54533410303c0dceba17f7b21feb1d5475f8fc *v2.12.8.2/Plain Craft Launcher 2.exe
+0ab0b28a93cc4d0754a9fa488b5939b5e092f0e5fb3f1e6550cc92a5d3f6577f *v2.13.0.1/Plain Craft Launcher 2.exe
+30eb93c62fc51ede0898648e67455478a3d5a4f279938ae65aec77b84cb9703f *v2.13.1.1/Plain Craft Launcher 2.exe
+5582952ded3b443503f66c23b810802bd20f1a3e847b54d9e09653a825859a36 *v2.14.0.0/Plain Craft Launcher 2.exe
+6b6e1260cb5a1d6a303855f1c60cab3d0bc1aebba7e40a964180188b271e7386 *v2.99.0.0/Plain Craft Launcher 2.exe

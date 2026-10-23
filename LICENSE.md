@@ -4,7 +4,7 @@
 
 ## 一、PCL 归档文件
 
-`v*/` 目录下归档的所有 PCL 文件（含 `Plain Craft Launcher 2.exe`）版权归 PCL 作者（龙腾猫跃）所有，**不适用本仓库任何开源协议**。
+`versions/v*/` 目录下归档的所有 PCL 文件（含 `Plain Craft Launcher 2.exe`）版权归 PCL 作者（龙腾猫跃）所有，**不适用本仓库任何开源协议**。
 
 这些文件的复制、分发与使用须遵守《PCL 分发有限许可》与《PCL 存储库合理使用指南》：
 

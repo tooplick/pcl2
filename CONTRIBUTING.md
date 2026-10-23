@@ -20,7 +20,7 @@
    ```text
    https://raw.githubusercontent.com/tooplick/pcl2/main/versions/v<版本号>/Plain%20Craft%20Launcher%202.exe
    ```
-6. **填写说明**：在提交信息或 PR 描述中写出版本号、文件来源链接，以及 SHA-256 校验值。
+6. **更新校验清单**：把新文件的 SHA-256 追加到 [versions/CHECKSUMS.txt](versions/CHECKSUMS.txt)（Git Bash 中可用 `sha256sum <文件>` 计算），并在提交信息或 PR 描述中写出版本号与文件来源链接。
 
 ## 文件与命名约定
 
