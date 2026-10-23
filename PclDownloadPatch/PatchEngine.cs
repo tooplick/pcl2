@@ -80,17 +80,27 @@ static class McDownloadPatch
         Log("[完成] 已写入补丁副本：" + dst);
     }
 
+    // 版本策略登记表：门槛版本 → 策略方法。匹配时取 MinVersion 不高于源版本的最新一条；
+    // 未适配的新版本自动沿用最近的旧策略（AGENTS.md「补丁版本策略」约束），
+    // IL 结构不兼容时各 Patch* 方法因模式匹配失败而中止，不会写出文件。
+    private static readonly (Version MinVersion, Action Strategy)[] VersionStrategies =
+    {
+        (new Version(2, 99, 0, 0), PatchRestrictedBuild299),
+    };
+
     static void ApplyVersionStrategy(Version version)
     {
-        // Restrictions start at 2.99.0.0. Apply the restricted-build strategy to that
-        // version and later releases; structural mismatches fail before source replacement.
-        if (version >= new Version(2, 99, 0, 0))
+        (Version, Action)? selected = null;
+        foreach (var entry in VersionStrategies)
         {
-            PatchRestrictedBuild299();
-            return;
+            if (version < entry.MinVersion) continue;
+            if (selected == null || entry.MinVersion > selected.Value.Item1)
+                selected = entry;
         }
-
-        throw new InvalidOperationException("尚未适配 PCL " + version + " 的补丁策略。");
+        if (selected == null)
+            throw new InvalidOperationException("尚未适配 PCL " + version + " 的补丁策略。");
+        Log("[策略] 采用 " + selected.Value.Item1 + " 基线策略");
+        selected.Value.Item2();
     }
 
     static void PatchRestrictedBuild299()
