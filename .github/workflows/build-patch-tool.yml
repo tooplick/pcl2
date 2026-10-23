@@ -1,0 +1,91 @@
+name: Build Patch Tool
+
+# 自动构建 PCL 下载补丁工具，并把编译产物提交回仓库。
+# 触发条件：
+#   1. push 到 main 且改动了工具源码或本工作流
+#   2. 手动触发（可勾选「强制重新构建」）
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'PclDownloadPatch/**'
+      - '.github/workflows/build-patch-tool.yml'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: '即使源码无变化也重新提交构建产物'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-patch-tool-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装 .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: 构建（Release / net48）
+        shell: pwsh
+        run: dotnet build ./PclDownloadPatch/PclDownloadPatch.csproj -c Release
+
+      - name: 记录构建信息
+        id: buildinfo
+        shell: pwsh
+        run: |
+          $exe = 'PclDownloadPatch/bin/Release/net48/PCL Download Patch.exe'
+          if (-not (Test-Path $exe)) { throw "构建产物不存在：$exe" }
+          $hash = (Get-FileHash $exe -Algorithm SHA256).Hash.ToLowerInvariant()
+          $stamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd HH:mm:ss UTC')
+          "sha256=$hash" >> $env:GITHUB_OUTPUT
+          "stamp=$stamp" >> $env:GITHUB_OUTPUT
+          "exe=$exe" >> $env:GITHUB_OUTPUT
+          Write-Output "SHA-256: $hash"
+
+      - name: 提交构建产物
+        shell: pwsh
+        run: |
+          $exe = '${{ steps.buildinfo.outputs.exe }}'
+          $hash = '${{ steps.buildinfo.outputs.sha256 }}'
+          $stamp = '${{ steps.buildinfo.outputs.stamp }}'
+          $force = '${{ github.event.inputs.force }}'
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git add -- $exe
+          $hasStaged = -not [string]::IsNullOrEmpty((git diff --cached --name-only))
+          if (-not $hasStaged -and $force -ne 'true') {
+            Write-Output '构建产物无变化，跳过提交。'
+            exit 0
+          }
+
+          $msg = "build: 更新补丁工具构建产物`n`n- 触发：${{ github.event_name }} @ ${{ github.sha }}`n- SHA-256: $hash`n- 构建时间：$stamp"
+          # 用 UTF-8 文件提交，避免中文提交信息乱码
+          [System.IO.File]::WriteAllText('commit-msg.txt', $msg, (New-Object System.Text.UTF8Encoding($false)))
+          git commit -F commit-msg.txt
+          Remove-Item commit-msg.txt -ErrorAction SilentlyContinue
+
+      - name: 推送
+        if: steps.buildinfo.outcome == 'success'
+        shell: pwsh
+        run: |
+          # 仅当本地领先远端时推送（产物无变化时不会产生新提交）
+          $ahead = git rev-list --count origin/main..HEAD 2>$null
+          if ($ahead -gt 0) {
+            git push origin HEAD:main
+            Write-Output "已推送 $ahead 个提交。"
+          } else {
+            Write-Output '无新提交，跳过推送。'
+          }
