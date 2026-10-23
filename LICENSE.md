@@ -1,6 +1,6 @@
 # 许可说明
 
-本仓库包含两类内容，适用不同的许可条款。
+本仓库包含三类内容，适用不同的许可条款。
 
 ## 一、PCL 归档文件
 
@@ -13,12 +13,18 @@
 
 本仓库仅作历史版本存档，未对上述文件作任何修改、破解或二次打包，也未获得 PCL 作者的官方背书。若本说明与官方许可不一致，以官方许可为准。
 
-## 二、仓库自有文档
+## 二、补丁工具源码
+
+`PclDownloadPatch/` 目录下的补丁工具源码采用 **MIT 许可**发布，可自由使用、修改与分发，需保留版权与许可声明：
+
+- 许可与免责声明全文：[PclDownloadPatch/LICENSE](PclDownloadPatch/LICENSE)
+
+## 三、仓库自有文档
 
 由本仓库撰写的说明文字（`README.md`、`CONTRIBUTING.md`、本文件等）不保留任何权利，按 **CC0 1.0 通用（公有领域贡献）** 发布，可自由复制、修改与再分发，无需署名：
 
 - 许可全文：<https://creativecommons.org/publicdomain/zero/1.0/legalcode.zh-hans>
 
-## 三、第三方权利
+## 四、第三方权利
 
 PCL、Plain Craft Launcher、Minecraft 等名称与相关素材的权利归各自权利人所有。本仓库的使用不构成对上述权利人的任何授权。
