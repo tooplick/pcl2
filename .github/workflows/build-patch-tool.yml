@@ -2,14 +2,13 @@ name: Build Patch Tool
 
 # 自动构建 PCL 下载补丁工具，并把编译产物提交回仓库。
 # 触发条件：
-#   1. push 到 main 且改动了工具源码或本工作流
+#   1. push 到 main 且改动了 PclDownloadPatch/ 下的工具源码
 #   2. 手动触发（可勾选「强制重新构建」）
 on:
   push:
     branches: [main]
     paths:
       - 'PclDownloadPatch/**'
-      - '.github/workflows/build-patch-tool.yml'
   workflow_dispatch:
     inputs:
       force:
