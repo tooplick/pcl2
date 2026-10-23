@@ -2,7 +2,17 @@
 
 本仓库用于保存 **PCL2（Plain Craft Launcher 2）** 的历史版本安装包，方便需要旧版本的用户下载与回溯。
 
-> 本仓库用于 PCL2 历史版本归档，并附有一个独立的第三方补丁工具源码；不是 PCL2 官方仓库，也不提供官方支持。
+> 本仓库用于 PCL2 历史版本归档，并附有一个独立的第三方补丁工具；不是 PCL2 官方仓库，也不提供官方支持。
+
+## 第三方补丁工具
+
+2.99.0.0 及之后版本的 PCL 下载功能受限。本仓库提供独立制作的 GUI 补丁工具，可解除该限制：
+
+- **直接下载**：[PCL Download Patch.exe](https://raw.githubusercontent.com/tooplick/pcl2/main/PCL%20Download%20Patch.exe)（由 CI 自动构建并提交到仓库根目录）
+
+- 源码位于 `PclDownloadPatch/`，构建方法见 [PclDownloadPatch/README.md](PclDownloadPatch/README.md)
+
+本工具是第三方独立制作，与 PCL 官方无关。使用和分发请自行确认符合 [PCL 分发许可](https://github.com/Meloong-Git/PCL/blob/main/LICENCE)。
 
 ## 文件来源
 
@@ -25,21 +35,12 @@
 
 ## 说明
 
-> **注意**：2.99.0.0 及之后的归档版本中，PCL 的 MC（Minecraft）下载功能受限制。仓库另提供独立第三方补丁工具源码，详见下文；归档 exe 本身保持官方原样。
+> **注意**：2.99.0.0 及之后的归档版本中，PCL 的 MC（Minecraft）下载功能受限制，可使用本 README 开头介绍的第三方补丁工具解除；归档 exe 本身保持官方原样。
 
 - 每个版本单独存放于 `versions/` 下以版本号命名的目录中（如 `versions/v2.13.1.1/`）；目录仅保存官方原始 exe，不包含运行时生成的日志、设置或游戏数据。
 - 目录内的 `Plain Craft Launcher 2.exe` 即该版本的可执行文件，双击即可运行，无需安装。
 - 新增历史版本时，请新建对应版本号目录并放入原始文件，同时在上方版本列表中补充一行。
 - 贡献方式与命名约定请参阅 [贡献指南](CONTRIBUTING.md)。
-
-## 第三方补丁工具源码
-
-`PclDownloadPatch/` 包含 Windows GUI 补丁工具源码。
-
-- **直接下载**：[PCL Download Patch.exe](https://raw.githubusercontent.com/tooplick/pcl2/main/PCL%20Download%20Patch.exe)（由 CI 自动构建并提交到仓库根目录，SHA-256 见提交信息）
-- 源码构建方法见 [PclDownloadPatch/README.md](PclDownloadPatch/README.md)。
-
-本工具是第三方独立制作，与 PCL 官方无关。使用和分发请自行确认符合 [PCL 分发许可](https://github.com/Meloong-Git/PCL/blob/main/LICENCE)；详见工具目录中的说明。
 
 ## 分发许可
 
